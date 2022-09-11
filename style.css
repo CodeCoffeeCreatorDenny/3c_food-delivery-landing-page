@@ -26,6 +26,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.8;
+  color: var(--dark-color);
+  background-color: var(--white-color);
 }
 a {
   text-decoration: none;
@@ -61,4 +63,90 @@ h3 {
 }
 h4 {
   font-size: 1em;
+}
+
+.container {
+  min-width: 110px;
+  padding: 0 2em;
+  margin: 0 auto;
+}
+
+.icons a {
+  position: relative;
+  font-size: 1.375em;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  text-align: center;
+}
+
+/* HEADER */
+header {
+  position: relative;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  background-color: var(--dark-color);
+  z-index: -1;
+}
+
+header :where(nav, .left, .right, ul, .icons) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header :where(.left, ul) {
+  flex-direction: column;
+}
+
+header nav {
+  padding: 1.5em 0;
+  line-height: 2.5em;
+}
+
+header nav a {
+  padding: 0 1em;
+  color: var(--white-color);
+  transition: var(--trans-co);
+}
+
+header nav a:hover {
+  color: var(--primary-color);
+}
+
+header nav .logo a {
+  font-size: 1.5em;
+  font-weight: 500;
+  padding-left: 0;
+  display: flex;
+  color: var(--primary-color);
+}
+header nav .icart .number {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  color: var(--primary-color);
+  background-color: #fed33040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  header :where(.left, ul) {
+    flex-direction: row;
+  }
+  header nav .logo a {
+    margin-right: 2em;
+  }
 }
