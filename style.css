@@ -142,11 +142,150 @@ header nav .icart .number {
   border-radius: 4px;
 }
 
+header nav .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  max-width: 320px;
+  padding: 2em;
+  background-color: var(--primary-color);
+  z-index: 1000;
+
+  border-radius: 0 50% 50% 0;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.5s, visibility 0.2s, border-radius 0.5s 0.4s;
+}
+
+.menu.show {
+  transform: translateX(0);
+  visibility: inherit;
+  border-radius: 0;
+}
+
+body.menu-visible {
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.menu-visible .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+header nav .menu ul {
+  align-items: flex-start;
+  line-height: 3em;
+}
+
+header nav .menu ul li a {
+  font-size: 1.5em;
+  color: var(--dark-color);
+}
+
+header nav .menu ul li a:hover {
+  color: var(--white-color);
+}
+
+header .search {
+  background-color: var(--white-color);
+  height: 0;
+  visibility: hidden;
+  transition: height 0.3s, visibility 0.3s;
+}
+
+.showsearch .search {
+  height: 60px;
+  visibility: inherit;
+}
+
+header .search input {
+  width: 100%;
+  line-height: 60px;
+  outline: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 1.5em;
+  font-weight: 300;
+  text-align: right;
+  background-color: transparent;
+}
+
+header .search input::placeholder {
+  color: var(--dark-color);
+}
+
+header .s-trigger i.ri-close-line,
+.showsearch header .s-trigger .ri-search-line {
+  display: none;
+}
+
+.showsearch header .s-trigger i.ri-close-line {
+  display: block;
+}
+
+.showsearch header .s-trigger {
+  background-color: #ff25251a;
+  color: var(--secondary-color);
+  border-radius: 7px;
+  transition: var(--trans-back-co);
+}
+
+.showsearch header .s-trigger:hover {
+  background-color: #ff25254a;
+}
+/* MAIN */
+main > div {
+  position: relative;
+  padding: 5em 0;
+}
+
+.hero {
+  color: var(--white-color);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.5em, -0.875em + 8.333vw, 3.5em);
+  margin-bottom: 0.5em;
+}
+
 @media screen and (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
   header :where(.left, ul) {
     flex-direction: row;
   }
   header nav .logo a {
     margin-right: 2em;
+  }
+  header nav .menu {
+    position: relative;
+    padding: 0;
+    max-width: max-content;
+    background-color: transparent;
+    visibility: inherit;
+    transform: none;
+  }
+  header nav .menu ul li a {
+    font-size: inherit;
+    color: var(--white-color);
+  }
+  header nav .menu ul li a:hover {
+    color: var(--primary-color);
   }
 }
